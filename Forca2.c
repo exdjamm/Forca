@@ -92,6 +92,7 @@ printf("|       /|\\  \n");
 printf("|__     /    \n");
 }
 
+}
 int contaLetras(char vetor[]){
 	int cont, i;
 	i = cont = 0;
@@ -131,7 +132,8 @@ int jogada(char palavra[], char letra){
 
 void exibirVetor(char vetor[], int tamanho){
 	//char letra;	system("cls");
-	for (int i = 0; i < tamanho; ++i){
+	int i;
+	for (i = 0; i < tamanho; ++i){
 		printf("%c", vetor[i]);
 	}
 	printf("\n");
@@ -160,7 +162,7 @@ int main(){
 	inicilizaVetor(riscos, qletras, '-') ;
 	inicilizaVetor(letraErradas, 20, '\0');
 	// Inicio o jogo
-	while(erros<5){
+	while(erros<6){
 	
 		terminado = 0;
 
@@ -174,9 +176,7 @@ int main(){
 		printf("Dica : ");
 		exibirVetor(dica, contaLetras(dica));
 		
-		/*
-			LOCAL PARA O BONECO
-		*/
+		desenhaBoneco(erros);
 		
 		exibirVetor(riscos, qletras);
 
@@ -225,13 +225,3 @@ int main(){
 	scanf("%c");
 	return 0;
 }
-	
-	
-	
-	
-
-//	while(QErros <6){	
-		
-//
-	
-
