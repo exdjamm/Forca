@@ -13,6 +13,19 @@ if(Ferrou == 1){
 }
 */
 
+int comparaPalavras(char palavra[], char palavra2[]){
+	int tamanho = contaLetras(palavra), i, acertos=0;
+	for(i = 0; i<tamanho; i++){
+		if(palavra[i] == palavra2[i]){
+			acertos++;
+		}
+	}
+	if(acertos == tamanho){
+		return 1;
+	}else{
+		return 0;
+	}
+}
 
 void inicilizaVetor(char vetor[], int tamanhoVetor, char preenchimento) {
 	int i;
@@ -87,9 +100,9 @@ void exibirVetor(char vetor[], int tamanho){
 
 int main(){
 	
-	int terminado = 0, qletras, erros = 0, i, Ntentativa = 0;
+	int terminado = 0, qletras, erros = 0, i, Ntentativa = 0, finalAcerto = 0;
 	
-	char letraErradas[20], letra, palavra[20], dica[20], riscos[20];
+	char letraErradas[20], letra[20], palavra[20], dica[20], riscos[20];
 	
 	// Le palavra
 	printf("Jogador 1 \nDigite uma palavra:");
@@ -106,7 +119,7 @@ int main(){
 	inicilizaVetor(riscos, qletras, '-') ;
 	inicilizaVetor(letraErradas, 20, '\0');
 	// Inicio o jogo
-	while(1){
+	while(erros<5){
 	
 		terminado = 0;
 
@@ -119,20 +132,32 @@ int main(){
 
 		printf("Dica : ");
 		exibirVetor(dica, contaLetras(dica));
+		
+		/*
+			LOCAL PARA O BONECO
+		*/
+		
 		exibirVetor(riscos, qletras);
 
 		printf("Digita uma letra:\n");
 
 		// Le a letra
-		scanf("\n%c", &letra);
+		scanf("\n%s", &letra);
+		if(contaLetras(letra) == 1){
 		
-		if (jogada(palavra, letra) != 1){
-			erros++;
-			letraErrada(letraErradas, erros, letra);
-		}
+			if (jogada(palavra, letra[0]) != 1){
+				erros++;
+				letraErrada(letraErradas, erros, letra[0]);
+			}
 			
-		substuiLetras(riscos, palavra, letra);
+			substuiLetras(riscos, palavra, letra[0]);
+		}
+		else{
+			finalAcerto = comparaPalavras(palavra, letra);
+			break;
 		
+		}
+	
 		for(i =0; i<qletras;i++){
 			if (riscos[i] == '-'){
 				terminado++;
@@ -147,10 +172,17 @@ int main(){
 	}
 
 	system("cls");
-	printf("Voce venceu o jogo em %d jogadas\n", Ntentativa);
+	if(finalAcerto == 1){
+		printf("Voce venceu o jogo em %d jogadas\n A palavra era: %s", Ntentativa, palavra);
+	}else{
+		printf("Voce perdeu o jogo :(\nA palavra era: %s", palavra);
+	}
+	
 	scanf("%c");
 	return 0;
 }
+	
+	
 	
 	
 
