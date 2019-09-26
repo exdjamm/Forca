@@ -173,7 +173,10 @@ int main(){
 
 	system("cls");
 	if(finalAcerto == 1){
+		printf("Voce venceu o jogo!!\n A palavra era: %s", palavra);
+	}else if(terminado == 0){
 		printf("Voce venceu o jogo em %d jogadas\n A palavra era: %s", Ntentativa, palavra);
+		
 	}else{
 		printf("Voce perdeu o jogo :(\nA palavra era: %s", palavra);
 	}
