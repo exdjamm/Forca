@@ -43,14 +43,55 @@ void letraErrada(char vetorErrado[], int posicao, char letra){
 }
 
 void desenhaBoneco(int vida){
-printf(" ");
-printf(" ");
-printf(" ");
-printf(" ");
-printf(" ");
-printf(" ");
-printf(" ");
+if(vida==0){
+printf(" ________\n");
+printf("|        |\n");
+printf("|        |\n");
+printf("|         \n");
+printf("|         \n");
+printf("|__       \n");
 }
+if(vida==1){
+printf(" ________\n");
+printf("|        |\n");
+printf("|        |\n");
+printf("|        o    \n");
+printf("|             \n");
+printf("|__           \n");
+}
+if(vida==2){
+printf(" ________\n");
+printf("|        |\n");
+printf("|        |\n");
+printf("|        O    \n");
+printf("|        |    \n");
+printf("|__           \n");
+}
+if(vida==3){
+printf(" ________\n");
+printf("|        |\n");
+printf("|        |\n");
+printf("|        O   \n");
+printf("|       /|  \n");
+printf("|__          \n");
+}
+if(vida==4){
+printf(" ________\n");
+printf("|        |\n");
+printf("|        |\n");
+printf("|        O   \n");
+printf("|       /|\\  \n");
+printf("|__         \n");
+}
+if(vida==5){
+printf(" ________\n");
+printf("|        |\n");
+printf("|        |\n");
+printf("|        O   \n");
+printf("|       /|\\  \n");
+printf("|__     /    \n");
+}
+
 int contaLetras(char vetor[]){
 	int cont, i;
 	i = cont = 0;
